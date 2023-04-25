@@ -1,0 +1,94 @@
+.loginScreen {
+  position: relative;
+  height: 100%;
+  background: url("https://miro.medium.com/v2/resize:fit:1400/1*5lyavS59mazOFnb55Z6znQ.png")
+    center no-repeat;
+  background-size: cover;
+}
+
+.loginScreen__gradient {
+  width: 100%;
+  z-index: 1;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0,
+    rgba(65, 26, 28, 0.8) 57%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+.loginScreen__logo {
+  position: fixed;
+  left: 0;
+  width: 150px;
+  object-fit: contain;
+  padding-left: 20px;
+}
+
+.loginScreen__button {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  color: #fff;
+  background-color: #e50914;
+  cursor: pointer;
+}
+
+.loginScreen__body {
+  position: absolute;
+  top: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  z-index: 1;
+  color: #fff;
+  padding: 20px;
+}
+.loginScreen__body > h1 {
+  font-size: 3.125rem;
+  margin-bottom: 20px;
+}
+
+.loginScreen__body > h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.loginScreen__input > form > input{
+    padding: 9px 20px;
+    outline-width: 20px;
+    height: 30px;
+    width: 30%;
+    border-radius: 0.25rem;
+    border-style: solid;
+    max-width: 600px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color:transparent;
+    border: 1px solid black;
+    border-color: rgba(128, 128, 128, 0.7);
+    color:white;
+}
+
+.loginScreen__getStarted{
+    padding: 17px 20px;
+    font-size: 1rem;
+    border: none;
+    color: rgb(255, 255, 255);
+    background-color: rgb(229, 9, 20);
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 7px;
+    border-radius: 0.25rem;
+    line-height: 1;
+    box-sizing: border-box;
+}
+.loginScreen__input{
+    margin: 20px;
+}
