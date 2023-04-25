@@ -25,6 +25,7 @@
     width:80px;
     cursor: pointer;
     padding-left: 20px;
+    z-index: 100;
 }
 
 .nav__avatar {
