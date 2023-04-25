@@ -1,6 +1,7 @@
 import React from 'react'
 import "./HomeScreen.css"
 import Nav from './Nav'
+import Banner from './Banner'
 
 
 const HomeScreen = () => {
@@ -8,7 +9,7 @@ const HomeScreen = () => {
     <div className='homeScreen'>
         <Nav />
 
-        {/* Banner */}
+        <Banner />
 
         {/* Row */}
     </div>
