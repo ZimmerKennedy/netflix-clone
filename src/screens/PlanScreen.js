@@ -16,6 +16,7 @@ import { loadStripe } from "@stripe/stripe-js";
 const PlanScreen = () => {
   const [products, setProducts] = useState([]);
   const user = useSelector(selectUser);
+
   useEffect(() => {
     const fetchProducts = async () => {
       const productsRef = collection(db, "products");
@@ -55,20 +56,17 @@ const PlanScreen = () => {
       success_url: window.location.origin,
       cancel_url: window.location.origin,
     });
-
     onSnapshot(docRef, async (snap) => {
       const { error, sessionId } = snap.data();
       if (error) {
         alert(`An error occurred: ${error.message}`);
       }
       if (sessionId) {
-        console.log('sessionId:', sessionId);
         const stripe = await loadStripe(
           "pk_live_51Ma2KaLcPQfq72GvwFpUXoCUir7mgNuiUewOu0xDjjyGfxsXEfs35iSlyySZPnBcdRtOqXwbR6bSh76rLS9FGI5R00p6d9MFux"
         );
         stripe.redirectToCheckout({ sessionId });
       }
-      console.log(`products`, sessionId);
     });
   };
 
@@ -76,7 +74,7 @@ const PlanScreen = () => {
     <div className="planScreen">
       {Object.entries(products).map(([productId, productData]) => {
         return (
-          <div className="planScreen__plan">
+          <div key={productId} className="planScreen__plan">
             <div className="planScreen__info">
               <h5> {productData.name} </h5>
               <h6> {productData.description} </h6>

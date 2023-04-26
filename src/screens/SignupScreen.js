@@ -5,41 +5,40 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "fire
 import { useNavigate } from "react-router-dom";
 
 const SignupScreen = () => {
-
-    const navigate = useNavigate();
-    const emailRef = useRef(null);
+  const navigate = useNavigate();
+  const emailRef = useRef(null);
   const passwordRef = useRef(null);
-  const register = (e) => {
-    e.preventDefault();
-    createUserWithEmailAndPassword(
-      auth,
-      emailRef.current.value,
-      passwordRef.current.value
-    )
-      .then((authUser) => {
-        console.log(authUser);
-        navigate("/home")
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  };
 
-  const signIn = (e) => {
+  const register = async (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(
+    try {
+      const authUser = await createUserWithEmailAndPassword(
         auth,
         emailRef.current.value,
         passwordRef.current.value
-    ).then((authUser) =>{
-        console.log(authUser)
-        navigate("/home")
-
-    })
-    .catch((error) =>{
-        alert(error.message);
-    })
+      );
+      console.log(authUser);
+      navigate("/home");
+    } catch (error) {
+      alert(error.message);
+    }
   };
+
+  const signIn = async (e) => {
+    e.preventDefault();
+    try {
+      const authUser = await signInWithEmailAndPassword(
+        auth,
+        emailRef.current.value,
+        passwordRef.current.value
+      );
+      console.log(authUser);
+      navigate("/home");
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   return (
     <div className="signupScreen">
       <form>
