@@ -1,22 +1,11 @@
 import React, { useState } from "react";
 import "./LoginScreen.css";
 import SignupScreen from "./SignupScreen";
-import { useNavigate } from "react-router-dom";
 
 const LoginScreen = () => {
   const [signIn, setSignIn] = useState(false);
-  const navigate = useNavigate();
 
-  const handleSignInClick = () =>{
-    setSignIn(true)
-    .then(() =>{
-      console.log("User Signed In");
-      navigate("/home");
-    })
-    .catch((error) =>{
-      console.error("Error Signing In", error);
-    });
-  }
+  
   return (
     <div className="loginScreen">
       <div className="loginScreen__background">
@@ -25,7 +14,7 @@ const LoginScreen = () => {
           src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
           alt=""
         />
-        <button className="loginScreen__button" onClick={handleSignInClick}>
+        <button className="loginScreen__button" onClick={() => setSignIn(true)}>
           Sign In
         </button>
         <div className="loginScreen__gradient" />
@@ -45,7 +34,7 @@ const LoginScreen = () => {
               <input type="email" placeholder="Email Address" />
               <button
                 className="loginScreen__getStarted"
-                onClick={handleSignInClick}
+                onClick={() => setSignIn(true)}
                 >
                 Get Started
               </button>

@@ -2,8 +2,11 @@ import React, { useRef } from "react";
 import "./SignupScreen.css";
 import { auth } from "../firebase.js";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const SignupScreen = () => {
+
+    const navigate = useNavigate();
     const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const register = (e) => {
@@ -15,6 +18,7 @@ const SignupScreen = () => {
     )
       .then((authUser) => {
         console.log(authUser);
+        navigate("/home")
       })
       .catch((error) => {
         alert(error.message);
@@ -29,6 +33,8 @@ const SignupScreen = () => {
         passwordRef.current.value
     ).then((authUser) =>{
         console.log(authUser)
+        navigate("/home")
+
     })
     .catch((error) =>{
         alert(error.message);
