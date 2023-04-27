@@ -14,6 +14,7 @@
 }
 .profileScreen__info{
     display: flex;
+    flex-direction: row;
 }
 .profileScreen__plans > h3{
     border-bottom: 1px solid #282c2d;
@@ -48,4 +49,24 @@
 }
 .profileScreen__details{
     margin-left: 20px;
+    color: white;
+    flex: 1;
 }
+
+
+@media (max-width: 768px) {
+    .profileScreen__body > h1 {
+     font-size: 30px;
+     margin-top: 40px;
+   }
+   .profileScreen__info > img {
+    height:50px;
+}
+.profileScreen__body{
+
+    
+    width: 70%;
+}
+
+ }
+ 

@@ -1,4 +1,5 @@
 .planScreen__plan{
+
     display: flex;
     justify-content: space-between;
     padding: 20px;
@@ -18,3 +19,6 @@
     cursor: pointer;
     background-color: #e50914
 }
+
+
+

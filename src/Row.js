@@ -32,7 +32,7 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
               src={`${base_url}${
                 isLargeRow ?  
                 movie.backdrop_path : movie.poster_path 
-                //  movie.poster_path : movie.backdrop_path
+
               }`}
               alt={movie.name}
             />

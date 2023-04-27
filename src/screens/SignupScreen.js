@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./SignupScreen.css";
 import { auth } from "../firebase.js";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
@@ -8,31 +8,26 @@ const SignupScreen = () => {
   const navigate = useNavigate();
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const [isSignUp, setIsSignUp] = useState(false);
 
-  const register = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const authUser = await createUserWithEmailAndPassword(
-        auth,
-        emailRef.current.value,
-        passwordRef.current.value
-      );
-      console.log(authUser);
-      navigate("/home");
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-  const signIn = async (e) => {
-    e.preventDefault();
-    try {
-      const authUser = await signInWithEmailAndPassword(
-        auth,
-        emailRef.current.value,
-        passwordRef.current.value
-      );
-      console.log(authUser);
+      if (isSignUp) {
+        const authUser = await createUserWithEmailAndPassword(
+          auth,
+          emailRef.current.value,
+          passwordRef.current.value
+        );
+        console.log(authUser);
+      } else {
+        const authUser = await signInWithEmailAndPassword(
+          auth,
+          emailRef.current.value,
+          passwordRef.current.value
+        );
+        console.log(authUser);
+      }
       navigate("/home");
     } catch (error) {
       alert(error.message);
@@ -41,17 +36,22 @@ const SignupScreen = () => {
 
   return (
     <div className="signupScreen">
-      <form>
-        <h1>Sign In</h1>
+      <form onSubmit={handleSubmit}>
+        <h1>{isSignUp ? "Sign Up" : "Login"}</h1>
         <input ref={emailRef} placeholder="Email" type="email" />
         <input ref={passwordRef} placeholder="Password" type="password" />
-        <button type="submit" onClick={signIn}>
-          Sign In
+        <button type="submit">
+          {isSignUp ? "Sign Up" : "Login"}
         </button>
         <h4>
-          <span className="signupScreen__gray">New to Netflix? </span>
-          <span className="signupScreen__link" onClick={register}>
-            Sign Up Now.
+          <span className="signupScreen__gray">
+            {isSignUp ? "Already have an account?" : "New to Netflix?"}{" "}
+          </span>
+          <span
+            className="signupScreen__link"
+            onClick={() => setIsSignUp(!isSignUp)}
+          >
+            {isSignUp ? "Login" : "Sign Up Now."}
           </span>
         </h4>
       </form>
