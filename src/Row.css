@@ -38,3 +38,36 @@
     transform: scale(1.20);
     opacity:1;
 }
+
+.row__scrollLeft,
+.row__scrollRight {
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+  color: #fff;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  border-radius: 0.2vw;
+  background-color: rgba(51, 51, 51, 0.5);
+  padding-bottom: 0.5rem;
+  height: 170px;
+  font-size: 1.5rem;
+  display:none;
+}
+
+.row__scrollLeft {
+  left: 0;
+}
+
+.row__scrollRight {
+  right: 0;
+}
+.row__posters:hover .row__scrollLeft,
+.row__posters:hover .row__scrollRight {
+  display: block;
+}
+
+.row__scrollLeft:hover, .row__scrollRight:hover{
+    font-size:2rem;
+}
