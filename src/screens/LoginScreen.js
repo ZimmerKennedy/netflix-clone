@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "./LoginScreen.css";
 import SignupScreen from "./SignupScreen";
 
+
 const LoginScreen = () => {
   const [signIn, setSignIn] = useState(false);
 
-  
+
   return (
     <div className="loginScreen">
       <div className="loginScreen__background">
@@ -13,6 +14,7 @@ const LoginScreen = () => {
           className="loginScreen__logo"
           src="/netflixLogo.png"
           alt=""
+          onClick={() => setSignIn(false)}
         />
         <button className="loginScreen__button" onClick={() => setSignIn(true)}>
           Sign In
@@ -23,7 +25,7 @@ const LoginScreen = () => {
             <SignupScreen />
           ) : (
             <>
-              <h1>Unlimited films, TV programmes and more.</h1>
+              <h1>Unlimited films, TV Programmes and More.</h1>
               <h2>Watch Anywhere. Cancel at any time.</h2>
               <h3>
                 Ready to watch? Enter your email to create or restart your
