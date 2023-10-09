@@ -6,7 +6,7 @@ node {
     stage('SonarQube Analysis') {
         def scannerHome = tool 'SonarQube-Scanner'
         withSonarQubeEnv() {
-            sh "${scannerHome}/bin/sonar-scanner"
+            sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=notflix-pipeline -Dsonar.sources=."
         }
     }
 }
